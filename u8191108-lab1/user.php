@@ -10,6 +10,7 @@ class User
     public string $name;
     public string $email;
     public string $password;
+    private $createDate;
 
     function __construct(int $id, string $name, string $email, string $password)
     {
@@ -17,15 +18,21 @@ class User
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+        $this->createDate = date('m/d/Y h:i:s a', time());
+    }
+
+    function getCreateDate() {
+        return $this->createDate;
     }
 
     function __toString(): string
     {
         return 'User{' .
             'id=' . $this->id .
-            ', username=' . $this->name .
+            ', name=' . $this->name .
             ', email=' . $this->email .
             ', password=' . $this->password .
+            ', createDate=' . $this->getCreateDate() .
             '}';
     }
 

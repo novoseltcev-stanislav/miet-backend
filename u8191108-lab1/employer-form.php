@@ -1,6 +1,6 @@
 <?php
 require '../vendor/autoload.php';
-require 'user.php';
+require 'employer.php';
 
 use Symfony\Component\Validator\ValidatorBuilder;
 
@@ -11,16 +11,16 @@ function getUserValidator() {
 }
 
 if ($_POST != null) {
-    $user = new User(intval($_POST['id']), $_POST['name'] . '', $_POST['email'] . '', $_POST['password'] . '');
+    $employer = new Employer(intval($_POST['id']), $_POST['name'] . '', floatval($_POST['salary']), date($_POST['offerDate']));
     $_POST = null;
-    echo 'Handling ' . $user;
+    echo 'Handling ' . $employer;
     $validator = getUserValidator();
-    $errors = $validator->validate($user);
+    $errors = $validator->validate($employer);
 
     if (count($errors) == 0) {
-        echo '<p style="color: #00ff00;">User valid</p>';
+        echo '<p style="color: #00ff00;">Employer valid</p>';
     } else {
-        echo '<p style="color: #ff0000;">User invalid</p>';
+        echo '<p style="color: #ff0000;">Employer invalid</p>';
         echo '<ul style="color:#ff0000;">';
         foreach ($errors as $error) {
             echo '<li>' . $error->getPropertyPath() . ' - ' . $error->getMessage() . '</li>';
@@ -37,17 +37,17 @@ if ($_POST != null) {
 </head>
 <body>
 
-<div class="new-user">
-    <h2>Create a new user</h2>
+<div class="new-employer">
+    <h2>Create a new emplyer</h2>
     <form action="" method="POST" style="display: block;">
         <p>Id</p>
         <input type="text" name="id">
         <p>Name</p>
         <input type="text" name="name">
-        <p>Email</p>
-        <input type="text" name="email">
-        <p>Password</p>
-        <input type="password" name="password">
+        <p>Salary</p>
+        <input type="text" name="salary">
+        <p>Offer Date</p>
+        <input type="date" name="offerDate">
         <input type="submit" value="submit" name="submit">
     </form>
 </div>
