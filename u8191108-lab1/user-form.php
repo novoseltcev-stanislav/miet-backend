@@ -37,7 +37,7 @@ if ($_POST != null) {
 </head>
 <body>
 
-<div class="new-user">
+<div class="new-user" style="margin: 100px auto auto auto;">
     <h2>Create a new user</h2>
     <form action="" method="POST" style="display: block;">
         <p>Id</p>
@@ -54,3 +54,9 @@ if ($_POST != null) {
 
 </body>
 </html>
+
+
+
+<?php
+
+?>

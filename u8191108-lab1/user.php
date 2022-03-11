@@ -10,7 +10,7 @@ class User
     public string $name;
     public string $email;
     public string $password;
-    private $createDate;
+    private string $createDate;
 
     function __construct(int $id, string $name, string $email, string $password)
     {
