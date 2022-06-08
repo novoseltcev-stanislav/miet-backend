@@ -2,18 +2,22 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
+use App\Models\Address;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $new_rows_count = 100;
+        Customer::factory($new_rows_count)->create();
+        Address::factory($new_rows_count)->create();
     }
 }
